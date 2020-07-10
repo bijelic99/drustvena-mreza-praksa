@@ -1,0 +1,48 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                               controllers.HomeController.index
+GET     /api/users                      controllers.UserController.getAllUsers
+GET     /api/users/:id                  controllers.UserController.getUser(id: String)
+POST    /api/users                      controllers.UserController.addUser
+PUT     /api/users                      controllers.UserController.updateUser
+PUT     /api/users/:id/change-password  controllers.UserController.changePassword(id: String)
+DELETE  /api/users/:id                  controllers.UserController.deleteUser(id: String)
+GET     /api/users/email/:email/is-unique      controllers.UserController.isEmailUnique(email: String)
+GET     /api/users/username/:username/is-unique   controllers.UserController.isUsernameUnique(username: String)
+GET     /api/statuses                   controllers.StatusController.getAllStatuses
+GET     /api/statuses/:id               controllers.StatusController.getStatus(id: String)
+POST    /api/statuses                   controllers.StatusController.addStatus
+PUT     /api/statuses                   controllers.StatusController.updateStatus
+DELETE  /api/statuses/:id               controllers.StatusController.deleteStatus(id: String)
+GET     /api/status-likes               controllers.StatusLikeController.getAllStatusLikes
+GET     /api/status-likes/:sId/:uId     controllers.StatusLikeController.getStatusLike(sId: String, uId: String)
+POST    /api/status-likes               controllers.StatusLikeController.addStatusLike
+DELETE  /api/status-likes/:sId/:uId     controllers.StatusLikeController.deleteStatusLike(sId: String, uId: String)
+GET     /api/friendships                controllers.FriendshipController.getAllFriendships
+GET     /api/friendships/:fId/:sId      controllers.FriendshipController.getFriendship(fId: String, sId: String)
+POST    /api/friendships                controllers.FriendshipController.addFriendship
+DELETE  /api/friendships/:fId/:sId      controllers.FriendshipController.deleteFriendship(fId: String, sId: String)
+GET     /api/friend-requests            controllers.FriendRequestController.getAllFriendRequests
+GET     /api/friend-requests/:sId/:rId  controllers.FriendRequestController.getFriendRequest(sId: String, rId: String)
+POST    /api/friend-requests            controllers.FriendRequestController.addFriendRequest
+DELETE  /api/friend-requests/:sId/:rId  controllers.FriendRequestController.deleteFriendRequest(sId: String, rId: String)
+GET     /api/photos/:id                 controllers.PhotoController.getPhoto(id: String)
+GET     /api/users/:userId/photo        controllers.PhotoController.getPhotoByUserId(userId: String)
+POST    /api/users/:userId/photo        controllers.PhotoController.addPhoto(userId: String)
+#PUT    /api/photos                     controllers.PhotoController.addPhoto
+DELETE  /api/users/:userId/photo        controllers.PhotoController.deletePhoto(userId: String)
+POST    /api/login                      controllers.UserController.login
+GET     /api/users/:userId/friendships  controllers.FriendshipController.getUsersFriendships(userId: String)
+GET     /api/users/:userId/friendships/as-users  controllers.FriendshipController.getUsersFriendshipsAsUsers(userId: String)
+GET     /api/users/:userId/friend-requests  controllers.FriendRequestController.getUsersFriendRequests(userId: String)
+POST    /api/friend-requests/accept     controllers.FriendRequestController.acceptFriendRequest()
+GET     /api/users/:userId/friends/statuses controllers.StatusController.getUsersFriendsStatuses(userId: String)
+GET     /api/users/:userId/status-likes controllers.StatusLikeController.getUsersStatusLikes(userId: String)
+GET     /api/users/:userId/statuses     controllers.StatusController.getUsersStatuses(userId: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

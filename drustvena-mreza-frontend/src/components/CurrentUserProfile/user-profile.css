@@ -1,0 +1,13 @@
+.profile-paper{
+    width: 100%;
+}
+.profile-image{
+    width: 50vw;
+    height: 50vw;
+}
+.edit-profile-picture{
+    z-index: 22;
+    position: absolute !important;
+    right: 10px;
+    bottom: 10px;
+}
